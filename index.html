@@ -11,9 +11,18 @@
 	</head>
   
 	<body>
-		
+	
+		<form>
+			<label for="playerChoice"> ROCK PAPER or SCISSORS </label>
+			<input id="playerChoice" type="text" placeholder="Rock, Paper or Scissors">
+		</form>
 
-	<script type="text/javascript"">
+		<button id="play" type="button" name="button">Play!</button>
+
+		<p id="computerChoice"> </p>
+		<p id="result"> </p>
+
+	<script type="text/javascript">
 				       
     		const rockPaperScissors = ["Rock", "Paper", "Scissors"];
     		function computerPlay (){
