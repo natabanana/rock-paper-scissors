@@ -2,19 +2,21 @@
 const rockPaperScissors = ["Rock", "Paper", "Scissors"];
     function computerPlay (){
     let randomPlay = Math.floor(Math.random() * rockPaperScissors.length)
-    console.log(rockPaperScissors[randomPlay])
-
+    return rockPaperScissors[randomPlay]
     }					  
-
+console.log(computerPlay())
 
 
 function playerSelection () {
+  document.querySelector("#playerChoice").innerText = ""
   return document.querySelector("#playerChoice").value.toLowerCase()
 }
-
 console.log(playerSelection())
 
-
+function computerSelection (){
+    return computerPlay().toLowerCase()
+}
+console.log(computerSelection())
     
 /* document.querySelector('#play').addEventListener('click', playRound)
 
