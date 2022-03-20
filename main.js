@@ -1,4 +1,8 @@
 
+let playerScoreDisplay = document.createElement('p')
+let computerScoreDisplay = document.createElement('p')
+let resultsDisplay = document.querySelector("#result").innerText
+
 // function called computerPlay that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. 
 
 const rockPaperScissors = ["Rock", "Paper", "Scissors"];
@@ -14,15 +18,14 @@ function playerInput () {
 }
 
 
-/* function pcChoice (){
-  return computerPlay().toLowerCase()
-}
- */
-
-
 //function playRound plays a single round of Rock Paper Scissors
 
 document.querySelector('#play').addEventListener('click', playRound)
+
+
+
+let playerScore = 0
+let computerScore = 0 
 
 function playRound(playerSelection, computerSelection) {
         
@@ -32,17 +35,29 @@ function playRound(playerSelection, computerSelection) {
         //return document.querySelector("#computerChoice").innerText
 
         if (playerSelection === "paper" && computerSelection === "scissors"){
-        return document.querySelector("#result").innerText =  "You Lose! Scissors beats Paper" && document.querySelector("#computerChoice").innerText
+        computerScore++ 
+        resultsDisplay.textContent = `You lose! ${computerSelection} beats ${playerSelection}`
         
         }
         else if (playerSelection === "scissors" && computerSelection === "rock"){
-        return document.querySelector("#result").innerText =  "You Lose! Rock beats Scissors"
+        computerScore++ 
+        resultsDisplay.textContent = `You lose! ${computerSelection} beats ${playerSelection}`
         }
         else if (playerSelection === "rock" && computerSelection === "paper"){
-        return document.querySelector("#result").innerText =  "You Lose! Paper beats Rock"
+        computerScore++ 
+        resultsDisplay.textContent = `You lose! ${computerSelection} beats ${playerSelection}`
         }
-        else if (playerSelection === computerSelection) {return document.querySelector("#result").innerText =  "It's a tie!"
+        else if (playerSelection === computerSelection) {resultsDisplay.textContent=  "It's a tie!"
         }
-        else return document.querySelector("#result").innerText = "You win!"
-            }
-    
+        else {
+        playerScore++
+        resultsDisplay.textContent = `You lose! ${playerSelection} beats ${computerSelection}`}
+            
+      playerScoreDisplay.textContent = "Player" + playerScore
+      computerScoreDisplay.textContent = "Computer" + computerScore
+      
+      }
+
+
+
+
