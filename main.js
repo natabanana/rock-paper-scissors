@@ -4,11 +4,7 @@ let computerScoreDisplay = document.createElement('p')
 let resultsDisplay = document.querySelector("#result").innerText
 
 
-
-
-const playerSelection = document.querySelector(".playerChoice").value.toLowerCase()
-const computerSelection = computerPlay();
-const weaponOptions = ["Rock", "Paper", "Scissors"];
+const weaponOptions = ["Rock", "Paper", "Scissors"]
 
 function computerPlay (){
   //this fucntion will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. 
@@ -18,34 +14,40 @@ function computerPlay (){
     }					  
 
 
-document.querySelector('.playerChoice').addEventListener('click', singlePlayRound)
+//const playerSelection = document.querySelector("#playerChoice").value.toLowerCase()
+
+document.querySelector('#play').addEventListener('click', singlePlayRound)
 
 
 function singlePlayRound(playerSelection, computerSelection) {
 //function singlePlayRound plays a single round of Rock Paper Scissors
 
+       playerSelection = document.querySelector("#playerChoice").value.toLowerCase() 
+       computerSelection = computerPlay()
         //return document.querySelector("#computerChoice").innerText
-        if (playerSelection === "paper" && computerSelection === "scissors"){
-        return document.querySelector("#result").innerText =  "You Lose! Scissors beats Paper"}
+        if ((playerSelection === "paper" && computerSelection === "scissors") ||  (playerSelection === "scissors" && computerSelection === "rock") || playerSelection === "rock" && computerSelection === "paper" ){
+        console.log(`You Lose! ${computerSelection} beats ${playerSelection}`)}
           
-        else if (playerSelection === "scissors" && computerSelection === "rock"){
-        return document.querySelector("#result").innerText =  "You Lose! Rock beats Scissors"}
-
-    
-        else if (playerSelection === "rock" && computerSelection === "paper"){
-        return document.querySelector("#result").innerText =  "You Lose! Paper beats Rock"
-          }
-
         else if (playerSelection === computerSelection ) {
-        return document.querySelector("#result").innerText =  "It's a tie!"}
+        console.log("It's a tie!")}
 
-        else {return document.querySelector("#result").innerText = "You win!"}
+        else {console.log( `You Win! ${playerSelection} beats ${computerSelection}`  )}
         
       
       }
 
 
-let playerScore = 0
+
+
+/*       function output(value) {
+        value = singlePlayRound()
+        const para = document.createElement('p');
+        document.body.appendChild(para);
+        para.textContent = `Value: ${value}`;
+      }
+ */
+
+/* let playerScore = 0
 let computerScore = 0 
 
 function game() {        
@@ -67,4 +69,4 @@ resultSingleRound = singlePlayRound(playerSelection, computerSelection)
   else { alert("You lost!")}
 
 }
-
+ */
