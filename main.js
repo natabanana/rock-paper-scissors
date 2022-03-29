@@ -16,7 +16,7 @@ function computerPlay (){
 
 //const playerSelection = document.querySelector("#playerChoice").value.toLowerCase()
 
-document.querySelector('#play').addEventListener('click', singlePlayRound)
+document.querySelector('#play').addEventListener('click', game)
 
 
 function singlePlayRound(playerSelection, computerSelection) {
@@ -26,47 +26,54 @@ function singlePlayRound(playerSelection, computerSelection) {
        computerSelection = computerPlay()
         //return document.querySelector("#computerChoice").innerText
         if ((playerSelection === "paper" && computerSelection === "scissors") ||  (playerSelection === "scissors" && computerSelection === "rock") || playerSelection === "rock" && computerSelection === "paper" ){
-        console.log(`You Lose! ${computerSelection} beats ${playerSelection}`)}
+        return `You lose ! ${computerSelection} beats ${playerSelection}`}
           
         else if (playerSelection === computerSelection ) {
-        console.log("It's a tie!")}
+        return "It's a tie!"}
 
-        else {console.log( `You Win! ${playerSelection} beats ${computerSelection}`  )}
+        else {return `You win ! ${playerSelection} beats ${computerSelection}`  }
         
       
       }
 
 
-
-
-/*       function output(value) {
-        value = singlePlayRound()
-        const para = document.createElement('p');
-        document.body.appendChild(para);
-        para.textContent = `Value: ${value}`;
-      }
- */
-
-/* let playerScore = 0
+let playerScore = 0
 let computerScore = 0 
 
-function game() {        
-
-resultSingleRound = singlePlayRound(playerSelection, computerSelection)
-
+function scoreCount() {
+  let singleGame = singlePlayRound() 
   for (let i = 0; i < 5; i++) {
-    if (resultSingleRound.split(" ").includes("lose")) {
+    if (singleGame.split(" ").includes("lose")) {
       computerScore++
     }
-    else {
-      playerScore++}
+
+    else if (singleGame.split(" ").includes("win")) {
+      playerScore++
+    }
+
   }
-  console.log(computerScore)
-  console.log(playerScore)
-  if (playerScore > computerScore){
-    alert("You won!")}
   
-  else { alert("You lost!")}
+}
+
+function game () {
+  let score = scoreCount()
+
+  if (playerScore > computerScore) {
+    console.log( `You win! The computer score is ${computerScore} and your score is ${playerScore}`)
+  }
+
+  else {console.log( `You lose! The computer score is ${computerScore} and your score is ${playerScore}`)
+}
+
 
 }
- */
+
+
+function output(value) {
+        value = game()
+        const para = document.createElement('p');
+        document.body.appendChild(para);
+        para.textContent = `Result: ${value}`;
+      
+}
+
