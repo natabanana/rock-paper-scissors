@@ -77,8 +77,6 @@ function game() {
     console.log(`You lose! The computer score is ${computerScore} and your score is ${playerScore}`)
   }
 
-
-
 }
 
 
