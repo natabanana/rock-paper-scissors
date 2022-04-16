@@ -44,7 +44,7 @@ let computerScore = 0
 
 
 
-function playMultipleRounds(numRounds) {
+/* function playMultipleRounds(numRounds) {
 //function playMultipleRounds plays as many games of Rock,Paper, Scissors are the 
 //user inputs 
 
@@ -80,7 +80,7 @@ function game() {
 
 
 }
-
+ */
 
 function output() {
   let value = game()
