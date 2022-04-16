@@ -16,24 +16,31 @@ function computerPlay() {
 
 //const playerSelection = document.querySelector("#playerChoice").value.toLowerCase()
 
-document.querySelector('#play').addEventListener('click', game)
+
+//document.querySelector('#play').addEventListener('click', game)
+
+
+const buttonOptions = document.querySelectorAll("div.playerSelectionButtons button")
+
+buttonOptions.forEach(button => { button.addEventListener('click', function() {singlePlayRound(button.value)})})
+
 
 
 function singlePlayRound(playerSelection, computerSelection) {
   //function singlePlayRound plays a single round of Rock Paper Scissors
-
-  playerSelection = prompt("Choose rock, paper or scissors ").toLowerCase();
+  
   computerSelection = computerPlay()
   //return document.querySelector("#computerChoice").innerText
+  
   if ((playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock") || playerSelection === "rock" && computerSelection === "paper") {
-    return `You lose ! ${computerSelection} beats ${playerSelection}`
+    console.log ( `You lose ! ${computerSelection} beats ${playerSelection}`)
   }
 
   else if (playerSelection === computerSelection) {
-    return "It's a tie!"
+   console.log ("It's a tie!")
   }
 
-  else { return `You win ! ${playerSelection} beats ${computerSelection}` }
+   else { console.log( `You win ! ${playerSelection} beats ${computerSelection}` )}
 
 
 }
