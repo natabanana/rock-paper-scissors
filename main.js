@@ -16,6 +16,13 @@ function computerPlay() {
 
 const buttonOptions = document.querySelectorAll("div.playerSelectionButtons button")
 buttonOptions.forEach(button => { button.addEventListener('click', function() {singlePlayRound(button.value)})})
+const divFinalResults = document.querySelector("#resultsDisplay")
+
+
+
+
+
+
 
 let playerScore = 0
 let computerScore = 0
@@ -26,24 +33,41 @@ function singlePlayRound(playerSelection, computerSelection) {
   
   computerSelection = computerPlay()
 
-  
+  let finalResult = " "
   let result = ""
-  
-  
+ 
 
 
   if ((playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock") || playerSelection === "rock" && computerSelection === "paper") {
-    result =  `<br/> You lose ! ${computerSelection} beats ${playerSelection}. <br/> Player score: ${playerScore}. Computer score: ${computerScore}`
     computerScore++
+    result =  `<br/> You lose ! ${computerSelection} beats ${playerSelection}. <br/><br/>  Player score: ${playerScore}. Computer score: ${computerScore}`
+    document.getElementById("resultsDisplay").innerHTML = result
+
+    if (computerScore === 5) {
+      finalResult = `<br/>You lose! The final score is: <br/>  computer score: ${computerScore} and your score: ${playerScore}`
+      document.getElementById("resultsDisplay").innerHTML = finalResult
+      divFinalResults.style.cssText = "background-color: pink; border: 1px solid black"
+      
+      
+    }
+    
   }
 
   else if (playerSelection === computerSelection) {
-    result = `<br/> It's a tie! <br/> Player score: ${playerScore}. Computer score: ${computerScore}`}
+    result = `<br/> It's a tie! <br/><br/>  Player score: ${playerScore}. Computer score: ${computerScore}`
+    document.getElementById("resultsDisplay").innerHTML = result}
 
-  else { result =  `<br/> You win ! ${playerSelection} beats ${computerSelection}. <br/> Player score: ${playerScore}. Computer score: ${computerScore}` 
-           playerScore++}
+  else {  playerScore++
+    result =  `<br/> You win ! ${playerSelection} beats ${computerSelection}. <br/><br/>  Player score: ${playerScore}. Computer score: ${computerScore}` 
+    document.getElementById("resultsDisplay").innerHTML = result     
+      if (playerScore === 5) {
+        finalResult = `<br/>You win! The final score is: <br/>  computer score: ${computerScore} and your score: ${playerScore}`
+        document.getElementById("resultsDisplay").innerHTML =  finalResult
+        divFinalResults.style.cssText = "background-color: green; border: 1px solid black"
+      }
+        }
    
-   document.getElementById("resultsDisplay").innerHTML = result
+ 
 
 }
 
@@ -51,7 +75,7 @@ function singlePlayRound(playerSelection, computerSelection) {
 
 
 
-
+/* 
  function playMultipleRounds(numRounds) {
 //function playMultipleRounds plays as many games of Rock,Paper, Scissors are the 
 //user inputs 
@@ -71,11 +95,11 @@ function singlePlayRound(playerSelection, computerSelection) {
 
   console.log(results)
 }
-
+ */
 
 
 function game() {
-  playMultipleRounds()
+ 
 
   if (playerScore > computerScore) {
     console.log(`You win! The computer score is ${computerScore} and your score is ${playerScore}`)
